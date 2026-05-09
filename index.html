@@ -116,8 +116,12 @@
     h1 {
       margin: 18px 0 10px;
       font-size: clamp(34px, 6vw, 64px);
-      line-height: 1.02;
+      line-height: 1.1;
       letter-spacing: -0.04em;
+      background: linear-gradient(135deg, #6b9cc4, #8fa8bf, #a0b0be, #94a3b8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .subtitle {
@@ -351,13 +355,9 @@
     <section class="wrap">
       <header>
         <div class="eyebrow"><span class="c-red">c</span><span class="c-orange">o</span><span class="c-yellow">u</span><span class="c-green">p</span><span class="c-blue">a</span><span class="c-purple">n</span><span class="c-dark">g</span></div>
-        <h1>酷澎各倉別路線連結路口</h1>
+        <h1>宏盛酷澎各倉別路線連結路口</h1>
         <p class="subtitle">點選任一倉別，即可開啟對應 Canva 內容。此頁面適合發布成公開連結，讓任何人快速進入指定倉別。</p>
       </header>
-
-      <div class="toolbar">
-        <input id="search" class="search" type="search" placeholder="搜尋倉別，例如 TAO1、TXRC8、TPH1" autocomplete="off" />
-      </div>
 
       <div id="grid" class="grid">
       <a class="card" href="https://canva.link/aaspl7sryiwfbs3" target="_blank" rel="noopener noreferrer" aria-label="開啟 TAO1 連結">
@@ -418,17 +418,5 @@
     </section>
   </main>
 
-  <script>
-    const search = document.querySelector("#search");
-    const cards = [...document.querySelectorAll(".card")];
-
-    search.addEventListener("input", () => {
-      const keyword = search.value.trim().toLowerCase();
-      cards.forEach(card => {
-        const text = card.textContent.toLowerCase();
-        card.style.display = text.includes(keyword) ? "flex" : "none";
-      });
-    });
-  </script>
 </body>
 </html>
