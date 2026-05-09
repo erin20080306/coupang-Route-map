@@ -7,15 +7,15 @@
   <meta name="description" content="TAO、TXRC、TPH 倉別 Canva 連結入口。" />
   <style>
     :root {
-      --bg: #070b1a;
-      --panel: rgba(255, 255, 255, .10);
-      --panel-strong: rgba(255, 255, 255, .16);
-      --text: #f8fafc;
-      --muted: rgba(248, 250, 252, .70);
-      --line: rgba(255, 255, 255, .18);
-      --shadow: 0 24px 80px rgba(0, 0, 0, .34);
-      --accent: #7dd3fc;
-      --accent-2: #c084fc;
+      --bg: #f0f2f5;
+      --panel: rgba(255, 255, 255, .85);
+      --panel-strong: rgba(255, 255, 255, .92);
+      --text: #1e293b;
+      --muted: rgba(30, 41, 59, .60);
+      --line: rgba(0, 0, 0, .10);
+      --shadow: 0 24px 80px rgba(0, 0, 0, .10);
+      --accent: #3b82f6;
+      --accent-2: #8b5cf6;
     }
 
     * {
@@ -32,10 +32,10 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at 15% 15%, rgba(125, 211, 252, .35), transparent 28%),
-        radial-gradient(circle at 85% 20%, rgba(192, 132, 252, .30), transparent 30%),
-        radial-gradient(circle at 50% 90%, rgba(34, 197, 94, .16), transparent 34%),
-        linear-gradient(135deg, #050816 0%, #0f172a 50%, #111827 100%);
+        radial-gradient(circle at 15% 15%, rgba(125, 211, 252, .20), transparent 28%),
+        radial-gradient(circle at 85% 20%, rgba(192, 132, 252, .15), transparent 30%),
+        radial-gradient(circle at 50% 90%, rgba(34, 197, 94, .10), transparent 34%),
+        linear-gradient(135deg, #eef2f7 0%, #f0f2f5 50%, #e8ecf1 100%);
       padding: 28px;
     }
 
@@ -50,7 +50,7 @@
     .wrap {
       width: 100%;
       border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255,255,255,.13), rgba(255,255,255,.07));
+      background: linear-gradient(180deg, rgba(255,255,255,.90), rgba(255,255,255,.75));
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       border-radius: 32px;
@@ -65,7 +65,7 @@
       position: absolute;
       inset: -2px;
       pointer-events: none;
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,.18), transparent);
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,.40), transparent);
       transform: translateX(-70%);
       animation: shine 7s ease-in-out infinite;
     }
@@ -85,16 +85,29 @@
     .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 8px 14px;
-      border: 1px solid rgba(125, 211, 252, .35);
-      background: rgba(125, 211, 252, .10);
-      color: #e0f2fe;
+      gap: 0;
+      padding: 10px 20px;
+      border: 1px solid rgba(0, 0, 0, .08);
+      background: rgba(255, 255, 255, .70);
       border-radius: 999px;
-      font-size: 14px;
-      font-weight: 800;
-      letter-spacing: .08em;
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: .04em;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
     }
+
+    .eyebrow span {
+      display: inline-block;
+    }
+
+    .c-red { color: #e60012; }
+    .c-orange { color: #f5a623; }
+    .c-yellow { color: #f8d000; }
+    .c-green { color: #00a650; }
+    .c-blue { color: #00a3e0; }
+    .c-purple { color: #7b2d8e; }
+    .c-dark { color: #2d2d2d; }
 
     h1 {
       margin: 18px 0 10px;
@@ -109,6 +122,30 @@
       color: var(--muted);
       font-size: clamp(15px, 2.4vw, 18px);
       line-height: 1.8;
+    }
+
+    .toolbar {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      gap: 12px;
+      margin: 0 auto 22px;
+      max-width: 720px;
+    }
+
+    .search {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.65);
+      color: var(--text);
+      border-radius: 18px;
+      padding: 16px 18px;
+      outline: none;
+      font-size: 16px;
+    }
+
+    .search::placeholder {
+      color: rgba(30, 41, 59, .40);
     }
 
     .grid {
@@ -126,7 +163,7 @@
       border-radius: 20px;
       border: 1px solid var(--line);
       background:
-        linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,.07));
+        linear-gradient(135deg, rgba(255,255,255,.75), rgba(255,255,255,.50));
       color: var(--text);
       text-decoration: none;
       overflow: hidden;
@@ -144,17 +181,17 @@
       border-radius: 999px;
       right: -46px;
       top: -46px;
-      background: radial-gradient(circle, rgba(125, 211, 252, .34), transparent 62%);
+      background: radial-gradient(circle, rgba(59, 130, 246, .15), transparent 62%);
       opacity: .9;
     }
 
     .card:hover,
     .card:focus-visible {
       transform: translateY(-6px);
-      border-color: rgba(125, 211, 252, .60);
+      border-color: rgba(59, 130, 246, .40);
       background:
-        linear-gradient(135deg, rgba(125, 211, 252, .22), rgba(192, 132, 252, .13));
-      box-shadow: 0 18px 44px rgba(0,0,0,.28);
+        linear-gradient(135deg, rgba(59, 130, 246, .12), rgba(139, 92, 246, .08));
+      box-shadow: 0 18px 44px rgba(0,0,0,.10);
     }
 
     .code {
@@ -180,8 +217,8 @@
       display: grid;
       place-items: center;
       border-radius: 999px;
-      background: rgba(255,255,255,.12);
-      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(0,0,0,.06);
+      border: 1px solid rgba(0,0,0,.10);
       font-size: 15px;
     }
 
@@ -190,7 +227,7 @@
       z-index: 1;
       margin-top: 28px;
       text-align: center;
-      color: rgba(248, 250, 252, .52);
+      color: rgba(30, 41, 59, .45);
       font-size: 13px;
     }
 
@@ -248,8 +285,8 @@
       }
 
       .eyebrow {
-        font-size: 12px;
-        padding: 6px 12px;
+        font-size: 18px;
+        padding: 8px 16px;
       }
 
       h1 {
@@ -260,6 +297,16 @@
       .subtitle {
         font-size: 14px;
         line-height: 1.6;
+      }
+
+      .search {
+        padding: 12px 14px;
+        font-size: 15px;
+        border-radius: 14px;
+      }
+
+      .toolbar {
+        margin-bottom: 16px;
       }
 
       footer {
@@ -288,10 +335,14 @@
   <main class="shell">
     <section class="wrap">
       <header>
-        <div class="eyebrow">WAREHOUSE LINK HUB</div>
+        <div class="eyebrow"><span class="c-red">c</span><span class="c-orange">o</span><span class="c-yellow">u</span><span class="c-green">p</span><span class="c-blue">a</span><span class="c-purple">n</span><span class="c-dark">g</span></div>
         <h1>酷澎各倉別路線連結路口</h1>
         <p class="subtitle">點選任一倉別，即可開啟對應 Canva 內容。此頁面適合發布成公開連結，讓任何人快速進入指定倉別。</p>
       </header>
+
+      <div class="toolbar">
+        <input id="search" class="search" type="search" placeholder="搜尋倉別，例如 TAO1、TXRC8、TPH1" autocomplete="off" />
+      </div>
 
       <div id="grid" class="grid">
       <a class="card" href="https://canva.link/aaspl7sryiwfbs3" target="_blank" rel="noopener noreferrer" aria-label="開啟 TAO1 連結">
@@ -348,10 +399,21 @@
 
       <footer>
         共 10 個倉別連結｜最後更新：2026-05-09
-        <br>宏盛設計
       </footer>
     </section>
   </main>
 
+  <script>
+    const search = document.querySelector("#search");
+    const cards = [...document.querySelectorAll(".card")];
+
+    search.addEventListener("input", () => {
+      const keyword = search.value.trim().toLowerCase();
+      cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(keyword) ? "flex" : "none";
+      });
+    });
+  </script>
 </body>
 </html>
