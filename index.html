@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>各倉別路線連結路口</title>
+  <meta name="description" content="TAO、TXRC、TPH 倉別 Canva 連結入口。" />
+  <style>
+    :root {
+      --bg: #070b1a;
+      --panel: rgba(255, 255, 255, .10);
+      --panel-strong: rgba(255, 255, 255, .16);
+      --text: #f8fafc;
+      --muted: rgba(248, 250, 252, .70);
+      --line: rgba(255, 255, 255, .18);
+      --shadow: 0 24px 80px rgba(0, 0, 0, .34);
+      --accent: #7dd3fc;
+      --accent-2: #c084fc;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 15%, rgba(125, 211, 252, .35), transparent 28%),
+        radial-gradient(circle at 85% 20%, rgba(192, 132, 252, .30), transparent 30%),
+        radial-gradient(circle at 50% 90%, rgba(34, 197, 94, .16), transparent 34%),
+        linear-gradient(135deg, #050816 0%, #0f172a 50%, #111827 100%);
+      padding: 28px;
+    }
+
+    .shell {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+      min-height: calc(100vh - 56px);
+      display: grid;
+      place-items: center;
+    }
+
+    .wrap {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.13), rgba(255,255,255,.07));
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-radius: 32px;
+      padding: clamp(24px, 5vw, 54px);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .wrap::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      pointer-events: none;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,.18), transparent);
+      transform: translateX(-70%);
+      animation: shine 7s ease-in-out infinite;
+    }
+
+    @keyframes shine {
+      0%, 60% { transform: translateX(-70%); }
+      100% { transform: translateX(70%); }
+    }
+
+    header {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      margin-bottom: 34px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border: 1px solid rgba(125, 211, 252, .35);
+      background: rgba(125, 211, 252, .10);
+      color: #e0f2fe;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: .08em;
+    }
+
+    h1 {
+      margin: 18px 0 10px;
+      font-size: clamp(34px, 6vw, 64px);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+    }
+
+    .subtitle {
+      margin: 0 auto;
+      max-width: 680px;
+      color: var(--muted);
+      font-size: clamp(15px, 2.4vw, 18px);
+      line-height: 1.8;
+    }
+
+    .toolbar {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      gap: 12px;
+      margin: 0 auto 22px;
+      max-width: 720px;
+    }
+
+    .search {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.10);
+      color: var(--text);
+      border-radius: 18px;
+      padding: 16px 18px;
+      outline: none;
+      font-size: 16px;
+    }
+
+    .search::placeholder {
+      color: rgba(248, 250, 252, .48);
+    }
+
+    .grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      position: relative;
+      min-height: 142px;
+      padding: 20px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,.07));
+      color: var(--text);
+      text-decoration: none;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      transition: transform .22s ease, border-color .22s ease, background .22s ease, box-shadow .22s ease;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      width: 130px;
+      height: 130px;
+      border-radius: 999px;
+      right: -46px;
+      top: -46px;
+      background: radial-gradient(circle, rgba(125, 211, 252, .34), transparent 62%);
+      opacity: .9;
+    }
+
+    .card:hover,
+    .card:focus-visible {
+      transform: translateY(-6px);
+      border-color: rgba(125, 211, 252, .60);
+      background:
+        linear-gradient(135deg, rgba(125, 211, 252, .22), rgba(192, 132, 252, .13));
+      box-shadow: 0 18px 44px rgba(0,0,0,.28);
+    }
+
+    .code {
+      font-size: clamp(24px, 3vw, 34px);
+      line-height: 1;
+      font-weight: 950;
+      letter-spacing: -0.03em;
+    }
+
+    .label {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .arrow {
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.16);
+      font-size: 18px;
+    }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      margin-top: 28px;
+      text-align: center;
+      color: rgba(248, 250, 252, .52);
+      font-size: 13px;
+    }
+
+    @media (max-width: 980px) {
+      .grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding: 14px;
+      }
+
+      .shell {
+        min-height: calc(100vh - 28px);
+      }
+
+      .wrap {
+        border-radius: 24px;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .card {
+        min-height: 122px;
+        padding: 18px;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="wrap">
+      <header>
+        <div class="eyebrow">WAREHOUSE LINK HUB</div>
+        <h1>各倉別路線連結路口</h1>
+        <p class="subtitle">點選任一倉別，即可開啟對應 Canva 內容。此頁面適合發布成公開連結，讓任何人快速進入指定倉別。</p>
+      </header>
+
+      <div class="toolbar">
+        <input id="search" class="search" type="search" placeholder="搜尋倉別，例如 TAO1、TXRC8、TPH1" autocomplete="off" />
+      </div>
+
+      <div id="grid" class="grid">
+      <a class="card" href="https://canva.link/qg6nnjr5dqy06qu" target="_blank" rel="noopener noreferrer" aria-label="開啟 TAO1 連結">
+        <span class="code">TAO1</span>
+        <span class="label">開啟倉別路線圖</span>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="card" href="https://canva.link/znedcbxb1dxzuhj" target="_blank" rel="noopener noreferrer" aria-label="開啟 TAO3 連結">
+        <span class="code">TAO3</span>
+        <span class="label">開啟倉別路線圖</span>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="card" href="https://canva.link/n50a4p2odoj2ml5" target="_blank" rel="noopener noreferrer" aria-label="開啟 TAO4 連結">
+        <span class="code">TAO4</span>
+        <span class="label">開啟倉別路線圖</span>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="card" href="https://canva.link/w6ur9i0i2dja30e" target="_blank" rel="noopener noreferrer" aria-label="開啟 TAO5 連結">
+        <span class="code">TAO5</span>
+        <span class="label">開啟倉別路線圖</span>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="card" href="https://canva.link/yw01epo7g7dut21" target="_blank" rel="noopener noreferrer" aria-label="開啟 TAO6 連結">
+        <span class="code">TAO6</span>
+        <span class="label">開啟倉別路線圖</span>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="card" href="https://canva.link/ounu6f03mo9plm0" target="_blank" rel="noopener noreferrer" aria-label="開啟 TAO7 連結">
+        <span class="code">TAO7</span>
+        <span class="label">開啟倉別路線圖</span>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="card" href="https://www.canva.com/design/DAHFB2djeg8/c_8EN6xW5x2jt9E6E1X8gA/view?utm_content=DAHFB2djeg8&amp;utm_campaign=designshare&amp;utm_medium=link&amp;utm_source=viewer" target="_blank" rel="noopener noreferrer" aria-label="開啟 TAO9 連結">
+        <span class="code">TAO9</span>
+        <span class="label">開啟倉別路線圖</span>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="card" href="https://canva.link/l1af015sa9q1rpa" target="_blank" rel="noopener noreferrer" aria-label="開啟 TAO17 連結">
+        <span class="code">TAO17</span>
+        <span class="label">開啟倉別路線圖</span>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="card" href="https://canva.link/6hkfh90j6e7e4fv" target="_blank" rel="noopener noreferrer" aria-label="開啟 TXRC8 連結">
+        <span class="code">TXRC8</span>
+        <span class="label">開啟倉別路線圖</span>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="card" href="https://canva.link/xvtlehlzqef5pxu" target="_blank" rel="noopener noreferrer" aria-label="開啟 TPH1 連結">
+        <span class="code">TPH1</span>
+        <span class="label">開啟倉別路線圖</span>
+        <span class="arrow">↗</span>
+      </a>
+      </div>
+
+      <footer>
+        共 10 個倉別連結｜最後更新：2026-05-09
+      </footer>
+    </section>
+  </main>
+
+  <script>
+    const search = document.querySelector("#search");
+    const cards = [...document.querySelectorAll(".card")];
+
+    search.addEventListener("input", () => {
+      const keyword = search.value.trim().toLowerCase();
+      cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(keyword) ? "flex" : "none";
+      });
+    });
+  </script>
+</body>
+</html>
